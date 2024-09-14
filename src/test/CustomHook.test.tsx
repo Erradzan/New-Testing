@@ -1,11 +1,9 @@
-// useFetchRecipe.test.tsx
 import { renderHook, act } from '@testing-library/react';
 import { waitFor } from '@testing-library/react';
 import useFetchRecipe from '../useFetchRecipe';
 import { fetchRandomRecipe } from '../api';
 import { Meal } from '../types';
 
-// Mock the fetchRandomRecipe function
 jest.mock('../api');
 
 const mockMeal: Meal = {

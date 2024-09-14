@@ -4,7 +4,6 @@ import DisplayRecipe from '../DisplayRecipe';
 import '@testing-library/jest-dom/extend-expect';
 import { Meal } from '../types';
 
-// Mock Meal data
 const mockMeal: Meal = {
   strMeal: 'Spaghetti Carbonara',
   strMealThumb: 'https://via.placeholder.com/150',
@@ -43,20 +42,14 @@ describe('DisplayRecipe', () => {
   test('renders recipe details when a valid meal is provided', () => {
     render(<DisplayRecipe meal={mockMeal} loading={false} error={null} />);
     
-    // Check that the recipe title is displayed
     expect(screen.getByText('Spaghetti Carbonara')).toBeInTheDocument();
-    
-    // Check that the ingredients list is displayed
     expect(screen.getByText('200g Spaghetti')).toBeInTheDocument();
     expect(screen.getByText('100g Bacon')).toBeInTheDocument();
     expect(screen.getByText('2 Eggs')).toBeInTheDocument();
     expect(screen.getByText('50g Parmesan Cheese')).toBeInTheDocument();
     expect(screen.getByText('1 tsp Black Pepper')).toBeInTheDocument();
-
-    // Check that the instructions are displayed
     expect(screen.getByText('Boil pasta. Fry bacon. Mix eggs and cheese.')).toBeInTheDocument();
     
-    // Check that the YouTube video is embedded
     const iframe = screen.getByTitle('YouTube video player');
     expect(iframe).toHaveAttribute('src', 'https://www.youtube.com/embed/dQw4w9WgXcQ');
   });
@@ -65,7 +58,6 @@ describe('DisplayRecipe', () => {
     const mockMealWithoutVideo = { ...mockMeal, strYoutube: '' };
     render(<DisplayRecipe meal={mockMealWithoutVideo} loading={false} error={null} />);
     
-    // Check that the YouTube video iframe is not rendered
     expect(screen.queryByTitle('YouTube video player')).not.toBeInTheDocument();
   });
 });
