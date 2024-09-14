@@ -3,7 +3,6 @@ import Main from '../Main';
 import { fetchRandomRecipe } from '../api';
 import { Meal } from '../types';
 
-// Mock the fetchRandomRecipe function
 jest.mock('../api');
 
 const mockMeal: Meal = {
@@ -21,15 +20,9 @@ describe('Main Component', () => {
   });
 
   test('should display error message when fetch fails', async () => {
-    // Mock the fetchRandomRecipe function to reject with an error
     (fetchRandomRecipe as jest.Mock).mockRejectedValue(new Error('Failed to fetch'));
-
     render(<Main />);
-
-    // Open modal to trigger fetch
     fireEvent.click(screen.getByText('Show Random Recipe'));
-
-    // Wait for the error message to be displayed
     await waitFor(() => {
       expect(screen.getByText('Failed to fetch recipe. Please try again.')).toBeInTheDocument();
     });
