@@ -55,7 +55,6 @@ const Profile: React.FC<ProfileProps> = ({ isDarkMode }) => {
       }
     };
 
-    // Ensure this code only runs on the client side
     if (typeof window !== 'undefined') {
       fetchUserProfile();
     }

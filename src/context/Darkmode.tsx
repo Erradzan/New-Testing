@@ -19,7 +19,6 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 
   useEffect(() => {
-    // Check if window is defined to access localStorage
     if (typeof window !== 'undefined') {
       const savedTheme = localStorage.getItem('theme');
       setIsDarkMode(savedTheme === 'dark');
@@ -37,7 +36,6 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   };
 
   useEffect(() => {
-    // Update the document class based on the theme state
     if (isDarkMode) {
       document.documentElement.classList.add('dark');
     } else {
