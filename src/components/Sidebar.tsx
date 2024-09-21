@@ -65,7 +65,7 @@ const Sidebar: React.FC = () => {
               <li>
                 <button 
                   className="flex items-center space-x-3 text-gray-800 dark:text-gray-200 hover:text-blue-500" 
-                  onClick={() => handleNavigation('/products')}
+                  onClick={() => handleNavigation('/product')}
                 >
                   <FaProductHunt />
                   <span>Product</span>
